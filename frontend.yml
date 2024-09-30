@@ -9,5 +9,5 @@
 
 - name: Start nginx
   ansible.builtin.systemd_service:
-    state: started
+    state: restarted
     name: nginx
