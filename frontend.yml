@@ -1,5 +1,5 @@
-- name: Frontend Setup
-  hosts: all
-  become: true
-  roles:
-   -frontend
+ - name: Frontend Setup
+   hosts: all
+   become: true
+   roles:
+    -frontend
