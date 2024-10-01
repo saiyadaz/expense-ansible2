@@ -1,8 +1,8 @@
 - name: Backend Setup
-  hosts: ALl
+  hosts: all
   become: yes
   tasks:
-    - name: Disabale default Nodejs Version Module
+    - name: Disable default Nodejs Version Module
       ansible.builtin.shell: dnf module disable nodejs -y
 
     - name: Enable Nodejs module for V20
