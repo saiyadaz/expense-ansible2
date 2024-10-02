@@ -34,21 +34,25 @@
         name:
           - PyMySQL
           - cryptography
-        executable: pip3.9
+        executable: pip3.11
 
     - name: Install MySQL
       ansible.builtin.dnf:
         name: mysql
         state: installed
 
-    - name: Load Schema
-      community.mysql.mysql_db:
-        state: import
-        name: all
-        target: /app/schema/backend.sql
-        login_user: root
-        login_password: ExpenseApp@1
-        login_host: mysql-dev.devopssz14.online
+    - name: Load schema with shell command
+      ansible.builtin.shell: mysql -h mysql-dev.devopssz14.online -uroot -pExpenseApp@1
+
+
+#    #name: Load Schema
+#      community.mysql.mysql_db:
+#        state: import
+#        name: all
+#        target: /app/schema/backend.sql
+#        login_user: root
+#        login_password: ExpenseApp@1
+#        login_host: mysql-dev.devopssz14.online
 
     - name: Start Backend Service
       ansible.builtin.systemd_service:
