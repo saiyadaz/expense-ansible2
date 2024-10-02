@@ -42,7 +42,7 @@
         state: installed
 
     - name: Load schema with shell command
-      ansible.builtin.shell: mysql -h mysql-dev.devopssz14.online -uroot -pExpenseApp@1
+      ansible.builtin.shell: mysql -h mysql-dev.devopssz14.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
 
 #    #name: Load Schema
