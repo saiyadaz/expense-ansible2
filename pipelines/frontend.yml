@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  frontend:
+  expense-frontend:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
@@ -14,6 +14,8 @@ pipelines:
     stages:
       - Dev:
           fetch_materials: true
+          environment_variables:
+            env: dev
           approval:
             type: manual
           allow_only_on_success: false
@@ -28,7 +30,9 @@ pipelines:
                     run_if: passed
       - QA:
           fetch_materials: true
-          approval:
+          environment_variables:
+            env: qa
+            approval:
             type: manual
           allow_only_on_success: false
           jobs:
@@ -42,6 +46,8 @@ pipelines:
                     run_if: passed
       - stage:
           fetch_materials: true
+          environment_variables:
+            env: stage
           approval:
             type: manual
           allow_only_on_success: false
@@ -56,6 +62,8 @@ pipelines:
                     run_if: passed
       - Prod:
           fetch_materials: true
+          environment_variables:
+            env: prod
           approval:
             type: manual
           allow_only_on_success: false
