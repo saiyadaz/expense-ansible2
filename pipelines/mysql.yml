@@ -25,7 +25,7 @@ pipelines:
                 - exec:
                     arguments:
                       - ansible.sh
-                      - frontend
+                      - mysql
                     command: bash
                     run_if: passed
       - QA:
@@ -41,7 +41,7 @@ pipelines:
                 - exec:
                     arguments:
                       - ansible.sh
-                      - frontend
+                      - mysql
                     command: bash
                     run_if: passed
       - stage:
@@ -57,7 +57,7 @@ pipelines:
                 - exec:
                     arguments:
                       - ansible.sh
-                      - frontend
+                      - mysql
                     command: bash
                     run_if: passed
       - Prod:
@@ -73,7 +73,7 @@ pipelines:
                 - exec:
                     arguments:
                       - ansible.sh
-                      - frontend
+                      - mysql
                     command: bash
                     run_if: passed
 
