@@ -1,0 +1,71 @@
+format_version: 10
+pipelines:
+  frontend:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-3a51435:
+        git: https://github.com/saiyadaz/expense-ansible2.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - Dev:
+          fetch_materials: true
+          approval:
+            type: manual
+          allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - frontend
+                    command: bash
+                    run_if: passed
+      - QA:
+          fetch_materials: true
+          approval:
+            type: manual
+          allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - frontend
+                    command: bash
+                    run_if: passed
+      - stage:
+          fetch_materials: true
+          approval:
+            type: manual
+          allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - frontend
+                    command: bash
+                    run_if: passed
+      - Prod:
+          fetch_materials: true
+          approval:
+            type: manual
+          allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - frontend
+                    command: bash
+                    run_if: passed
+
