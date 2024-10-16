@@ -41,18 +41,14 @@
         name: mysql
         state: installed
 
-    - name: Load schema with shell command
-      ansible.builtin.shell: mysql -h mysql-dev.devopssz14.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
-
-
-#    #name: Load Schema
-#      community.mysql.mysql_db:
-#        state: import
-#        name: all
-#        target: /app/schema/backend.sql
-#        login_user: root
-#        login_password: ExpenseApp@1
-#        login_host: mysql-dev.devopssz14.online
+    - name: Load Schema
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        target: /app/schema/backend.sql
+        login_user: root
+        login_password: "{{mysql_root_password}}"
+        login_host: mysql-{{env}}.devopssz14.online
 
     - name: Start Backend Service
       ansible.builtin.systemd_service:
