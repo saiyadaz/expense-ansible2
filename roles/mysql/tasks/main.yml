@@ -39,7 +39,7 @@
   community.mysql.mysql_info:
      login_user: root
      login_password: "{{mysql_root_password}}"
-     login_host: mysql-dev.devopssz14.online
+     login_host: mysql-"{{env}}.devopssz14.online
      filter: version
   register: mysql_connection_output
   ignore_errors: yes
