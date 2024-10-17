@@ -37,7 +37,7 @@
 
 - name: Check the DB connection with our password
   community.mysql.mysql_info:
-     login_user: ExpenseApp@1
+     login_user: root
      login_password: "{{mysql_root_password}}"
      login_host: mysql-dev.devopssz14.online
      filter: version
