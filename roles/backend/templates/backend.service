@@ -3,8 +3,9 @@ Description = Backend Service
 
 [Service]
 User=expense
-Environment=DB_HOST="mysql-{{ env }}.devopssz14.online"
+Environment=DB_HOST="{{DB_HOST}}"
 ExecStart=/bin/node /app/index.js
+Environment=DB_PWD="{{mysql_root_password}}"
 SyslogIdentifier=backend
 
 [Install]
