@@ -3,7 +3,7 @@ Description = Backend Service
 
 [Service]
 User=expense
-Environment=DB_HOST="{{DB_HOST}}"
+Environment=DB_HOST="{{ rds_endpoint }}"
 ExecStart=/bin/node /app/index.js
 Environment=DB_PWD="{{mysql_root_password}}"
 SyslogIdentifier=backend
